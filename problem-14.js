@@ -15,27 +15,44 @@
     NOTE: Once the chain starts the terms are allowed to go above one million.
  */
 
-function* collatzSequence(int) {
-  let terms = 1
-  while(int!==1) {
-    terms++
-    int = int & 1 ? 3*int+1:int/2
-  }
-  yield terms
-}
-
-var runCollatzSequence = collatzSequence(13)
-
-runCollatzSequence.next()
-console.log(runCollatzSequence.value())
-runCollatzSequence.next()
-console.log(runCollatzSequence.value())
-
-
-// function findLongestChain(maxInt) {
-//   var startingNum = 1
-//   var terms = 1
-//   while(startingNum <= maxInt){
-//     s
-//   }
+/* NOTE: This seems like a perfect use-case for ES6 generator functions,
+         consider refactoring to use
+ */
+// function collatzSequence(int) {
+//     var terms = 1
+//     while (int !== 1) {
+//         terms++
+//         int = int & 1 ? 3 * int + 1 : int / 2
+//     }
+//     return terms
 // }
+
+function maxCollatz(max) {
+  // store for memoizing previously checked integers
+  var prevChecked = {};
+  // assumes that param 'max' will be a positive integer greater than 0
+  var maxNum = 1;
+  var maxTerms = 1;
+  for(var i=1; i<=max; i++){
+    var currentNum = i;
+    var currentTerms = 1;
+    while (currentNum !== 1) {
+        // check the cache for previously checked integers and add terms if found
+        if(prevChecked[currentNum]) {
+          currentTerms += prevChecked[currentNum]
+          break
+        }
+        // else increment terms and continue to mutate integer according to pattern
+        currentTerms++
+        currentNum = currentNum & 1 ? 3 * currentNum + 1 : currentNum / 2
+    }
+    prevChecked[i] = currentTerms
+    if(currentTerms >= maxTerms){
+      maxNum = i;
+      maxTerms = currentTerms;
+    }
+  }
+  console.log('maxNum: ', maxNum, 'maxTerms: ', maxTerms)
+  return maxNum
+}
+console.log(maxCollatz(1000000))
