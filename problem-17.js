@@ -20,7 +20,7 @@ function spokenNumSub999(int) {
     if(int === 000) return ''
     const low = [
       'zero','one','two','three','four','five','six','seven','eight','nine',
-      'ten','eleven','twelve','thirteen','fourteen','fifteen','sixteen','eighteen','nineteen',
+      'ten','eleven','twelve','thirteen','fourteen','fifteen','sixteen','seventeen','eighteen','nineteen'
     ]
     const tens = [null, null, 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety']
 
@@ -30,6 +30,7 @@ function spokenNumSub999(int) {
       intArr[intArr.length-2] = null
     }
     while(intArr.length < 3) intArr.unshift(null)
+    console.log('intArr: ', intArr)
     let spoken = '';
     // Hundreds digit
     if(intArr[0]) spoken += low[intArr[0]] + ' hundred'
@@ -57,4 +58,4 @@ function countLetters(int){
   return concatSpoken(int).match(/[A-Za-z]/g).length
 }
 
-console.log(countLetters(1000))
+console.log(spokenNum(19))
