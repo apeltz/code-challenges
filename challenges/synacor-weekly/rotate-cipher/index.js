@@ -5,14 +5,19 @@
 function getEncodedClockwiseOriginal(str, x, y) {
 	// padEnd doesn't have great browser support
 	str = str.toUpperCase().replace(/[^a-zA-Z]/g, '').padEnd(x*y, 'X');
+	// generate a result string of the appropriate length so we can swap characters by index
 	let result = 'X'.repeat(x*y).split('');
 
 	let charAtIdx = 0;
+	// keeps track of the x- and y-axis distances to travel on next rotation
 	let yDist = y;
 	let xDist = x;
+	// keeps track of the remaining distance to travel before the next roration
 	let yCounter = 1;
 	let xCounter = 1;
+	// current axis along which we are traveling
 	let dir = 'y';
+	// current direction we are traveling along the axis
 	let inc = 1;
 	for (let i=1; i<=str.length; i++) {
 		if (dir === 'y') {
@@ -45,20 +50,14 @@ function getEncodedClockwiseOriginal(str, x, y) {
 }
 
 function getEncodedClockwise(str, x, y) {
-	// padEnd doesn't have great browser support
-	str = str.toUpperCase().replace(/[^a-zA-Z]/g, '').padEnd(x*y, 'X');
-	// generate a result string of the appropriate length so we can swap characters by index
+	str = str.toUpperCase().replace(/[^A-Z]/g, '').padEnd(x*y, 'X');
 	let result = 'X'.repeat(x*y).split('');
 
 	let charAtIdx = 0;
-	// keeps track of the x- and y-axis distances to travel on next rotation
 	let yDist = y;
 	let xDist = x;
-	// keeps track of the remaining distance to travel before the next roration
 	let counter = 0;
-	// current axis along which we are traveling
 	let dir = 'y';
-	// current direction we are traveling along the axis
 	let inc = 1;
 
 	for (let i=1; i<=str.length; i++) {
