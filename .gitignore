@@ -1,2 +1,8 @@
-npm-debug.log
+build
+dist
+test-reports*
 node_modules
+npm-debug.log
+.DS_STORE
+package-lock.json
+.npmrc

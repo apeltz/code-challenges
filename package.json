@@ -1,0 +1,23 @@
+{
+  "name": "code-challenges",
+  "version": "1.0.0",
+  "description": "\"collection of random code challenges and solutions\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha --reporter spec ./challenges/**/**/test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/apeltz/project-euler.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/apeltz/project-euler/issues"
+  },
+  "homepage": "https://github.com/apeltz/project-euler#readme",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^5.2.0"
+  }
+}
